@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soheil Srour - Spirit Medium</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #302b63;
+            --accent-color: #6e44ff;
+            --text-color: #f2f2f2;
+            --gold-color: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            line-height: 1.6;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            position: relative;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--gold-color);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(110, 68, 255, 0.3);
+            color: var(--gold-color);
+        }
+        
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('/api/placeholder/1200/800') center center/cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.8);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: var(--gold-color);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .services {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: var(--gold-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--gold-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold-color);
+        }
+        
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+        
+        .service-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--gold-color);
+        }
+        
+        .service-price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--accent-color);
+        }
+        
+        .about {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 50px;
+            color: var(--gold-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--gold-color);
+        }
+        
+        .contact {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold-color);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-color);
+        }
+        
+        .certificates {
+            margin: 20px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .banking-info {
+            margin: 20px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .ceo-signature {
+            font-style: italic;
+            color: var(--gold-color);
+            margin: 20px 0;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s linear infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            font-size: 30px;
+            animation-duration: 15s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 30%;
+            left: 70%;
+            font-size: 40px;
+            animation-duration: 25s;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            top: 70%;
+            left: 20%;
+            font-size: 25px;
+            animation-duration: 18s;
+            animation-delay: 5s;
+        }
+        
+        .floating-element:nth-child(4) {
+            top: 50%;
+            left: 50%;
+            font-size: 35px;
+            animation-duration: 22s;
+            animation-delay: 8s;
+        }
+        
+        .floating-element:nth-child(5) {
+            top: 80%;
+            left: 80%;
+            font-size: 28px;
+            animation-duration: 20s;
+            animation-delay: 12s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
+        
+        .ramadan-sale {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid var(--gold-color);
+        }
+        
+        .ramadan-sale h3 {
+            color: var(--gold-color);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-direction: column;
+            }
+            
+            nav a {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element">✧</div>
+        <div class="floating-element">✴</div>
+        <div class="floating-element">✺</div>
+        <div class="floating-element">✫</div>
+        <div class="floating-element">✵</div>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">Soheil Srour</div>
+            <div class="tagline">Bridging the Gap Between Worlds</div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>Connect with the Beyond</h1>
+        <p>Spiritual guidance and connections to departed loved ones through certified medium services</p>
+        <a href="#contact" class="btn">Book a Session</a>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Spiritual Services</h2>
+            
+            <div class="ramadan-sale">
+                <h3>Special Offer: 30% Off During Ramadan al Kareem</h3>
+                <p>Take advantage of our special spiritual services discount during this blessed month</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧕</div>
+                    <h3 class="service-title">Hijjab Online</h3>
+                    <p>Connect with spiritual guidance through our virtual hijjab sessions</p>
+                    <div class="service-price">$5</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🙏</div>
+                    <h3 class="service-title">Prayer</h3>
+                    <p>Dedicated prayer services performed on your behalf</p>
+                    <div class="service-price">$5</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🕯️</div>
+                    <h3 class="service-title">Siyyam</h3>
+                    <p>Spiritual fasting and meditation services</p>
+                    <div class="service-price">$6</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔮</div>
+                    <h3 class="service-title">Darb Mandal</h3>
+                    <p>Ancient divination technique for guidance and answers</p>
+                    <div class="service-price">$3</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📖</div>
+                    <h3 class="service-title">Reading Kaff</h3>
+                    <p>Traditional palm reading to reveal your past, present, and future</p>
+                    <div class="service-price">$4</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌙</div>
+                    <h3 class="service-title">Salat for Departed Parents</h3>
+                    <p>Special prayers dedicated to honoring your deceased parents</p>
+                    <div class="service-price">$2</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Tahdeer Arwah</h3>
+                    <p>Communication with spirits from the other side</p>
+                    <div class="service-price">$9</div>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Soheil Srour</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="coffee.png" alt="Soheil Srour - Spirit Medium">
+                </div>
+                <div class="about-text">
+                    <p>For over 20 years, Soheil Srour has been serving as a bridge between the physical and spiritual realms. Born with a natural gift of clairvoyance, Soheil has dedicated his life to helping others find comfort, closure, and guidance through his spiritual practices.</p>
+                    <p>Trained in various spiritual traditions from around the world, Soheil has mastered techniques that allow him to connect with the departed and channel messages from beyond. His services are certified by respected religious authorities including Al Azhar, Saudi Arabia, and al Majilis al Shii al Aála.</p>
+                    <p>Soheil's approach combines ancient wisdom with modern sensitivity, offering clients a safe and respectful environment to explore the mysteries of the spirit world. Whether you seek to communicate with a loved one who has passed on or need spiritual guidance for life's challenges, Soheil provides compassionate and authentic services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>After the loss of my mother, I was struggling to find peace. Soheil helped me communicate with her spirit, and the messages he conveyed were so specific that only she could have known. I finally found the closure I needed.</p>
+                    </div>
+                    <div class="testimonial-author">- Fatima K.</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>I was skeptical at first, but Soheil's Darb Mandal reading was incredibly accurate. He revealed things about my past that nobody else knew, and his guidance has helped me make important life decisions. Truly a gifted individual.</p>
+                    </div>
+                    <div class="testimonial-author">- Ahmed M.</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The Tahdeer Arwah session was a profound experience. Soheil created a peaceful atmosphere, and I could feel the presence of my grandfather. The messages that came through brought tears to my eyes and healing to my heart.</p>
+                    </div>
+                    <div class="testimonial-author">- Layla S.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Book a Session</h2>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choose a service...</option>
+                            <option value="hijjab">Hijjab Online ($5)</option>
+                            <option value="prayer">Prayer ($5)</option>
+                            <option value="siyyam">Siyyam ($6)</option>
+                            <option value="darb-mandal">Darb Mandal ($3)</option>
+                            <option value="reading-kaff">Reading Kaff ($4)</option>
+                            <option value="salat-parents">Salat for Departed Parents ($2)</option>
+                            <option value="tahdeer-arwah">Tahdeer Arwah ($9)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message or Special Requests</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Soheil Srour</div>
+                
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="certificates">
+                    <p>All services are certified from Al Azhar, Saudi Arabia and al Majjlis al Shii al Aála.</p>
+                    <p>ISO 3000 235 3678</p>
+                </div>
+                
+                <div class="banking-info">
+                    <p>IBAN: 098 098 098 113</p>
+                    <p>Swift: 34536 39761</p>
+                    <p>JP Morgan Bank and Morgan Stanley</p>
+                </div>
+                
+                <div class="ceo-signature">
+                    <p>Ayat al Allah CEO Abou Moustafa hafaza allahu sirrah.</p>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 Soheil Srour Spirit Medium. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
