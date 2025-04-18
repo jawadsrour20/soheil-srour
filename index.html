@@ -643,7 +643,7 @@
         <div class="container">
             <h2 class="section-title">Book a Session</h2>
             <div class="contact-form">
-                <form action="#" method="POST">
+                <form action="https://formspree.io/f/xblgvbnv" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -678,6 +678,9 @@
                         <textarea id="message" name="message"></textarea>
                     </div>
                     
+                      <input type="hidden" name="_captcha" value="false">
+                      <input type="hidden" name="_subject" value="New Session Booking">
+
                     <button type="submit" class="btn">Submit Request</button>
                 </form>
             </div>
